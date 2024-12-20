@@ -225,15 +225,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 48px;
-  width: 100vw;
-  height: 100vh;
-}
 
 #container-Dice {
   display: flex;
@@ -911,7 +902,7 @@ p {
 main {
 	display: flex;
 	justify-content: center;
-	background-color: #e6e6e6;
+	background-color: #b9b5b5;
 }
 
 .book {
@@ -1206,7 +1197,6 @@ main {
               </div>
             </div>
           </div>
-      
         </div>
     </div>
      <div id="spellGuide">
@@ -1636,19 +1626,19 @@ main {
 
         <label for="class">Class:</label>
         <select id="class">
-            <option value="null" data-dievalue="0">None Chosen</option>
-            <option value="Barbarian" data-dievalue="12">Barbarian (1d12) Proficiency Bonus: Strength, Constitution</option>
-            <option value="Bard" data-dievalue="8">Bard (1d8) Proficiency Bonus: Dexterity, Charisma</option>
-            <option value="Cleric" data-dievalue="8">Cleric (1d8) Proficiency Bonus: Wisdom, Charisma</option>
-            <option value="Druid" data-dievalue="8">Druid (1d8) Proficiency Bonus: Wisdom, Intelligence</option>
-            <option value="Fighter" data-dievalue="10">Fighter (1d10) Proficiency Bonus: Strength, Constitution</option>
-            <option value="Monk" data-dievalue="8">Monk (1d8) Proficiency Bonus: Dexterity, Strength</option>
-            <option value="Paladin" data-dievalue="10">Paladin (1d10) Proficiency Bonus: Wisdom, Charisma</option>
-            <option value="Ranger" data-dievalue="10">Ranger (1d10) Proficiency Bonus: Dexterity, Strength</option>
-            <option value="Rogue" data-dievalue="8">Rogue (1d8) Proficiency Bonus: Dexterity, Intelligence</option>
-            <option value="Sorcerer" data-dievalue="6">Sorcerer (1d6) Proficiency Bonus: Constitution, Charisma</option>
-            <option value="Warlock" data-dievalue="8">Warlock (1d8) Proficiency Bonus: Wisdom, Charisma</option>
-            <option value="Wizard" data-dievalue="6">Wizard (1d6) Proficiency Bonus: Intelligence, Wisdom</option>
+            <option value="null" data-dievalue="0" money-amount="00">None Chosen</option>
+            <option value="Barbarian" data-dievalue="12" money-amount="80">Barbarian (1d12) Proficiency Bonus: Strength, Constitution</option>
+            <option value="Bard" data-dievalue="8" money-amount="200">Bard (1d8) Proficiency Bonus: Dexterity, Charisma</option>
+            <option value="Cleric" data-dievalue="8" money-amount="200">Cleric (1d8) Proficiency Bonus: Wisdom, Charisma</option>
+            <option value="Druid" data-dievalue="8" money-amount="80">Druid (1d8) Proficiency Bonus: Wisdom, Intelligence</option>
+            <option value="Fighter" data-dievalue="10" money-amount="200">Fighter (1d10) Proficiency Bonus: Strength, Constitution</option>
+            <option value="Monk" data-dievalue="8" money-amount="20">Monk (1d8) Proficiency Bonus: Dexterity, Strength</option>
+            <option value="Paladin" data-dievalue="10" money-amount="200">Paladin (1d10) Proficiency Bonus: Wisdom, Charisma</option>
+            <option value="Ranger" data-dievalue="10" money-amount="200">Ranger (1d10) Proficiency Bonus: Dexterity, Strength</option>
+            <option value="Rogue" data-dievalue="8" money-amount="160">Rogue (1d8) Proficiency Bonus: Dexterity, Intelligence</option>
+            <option value="Sorcerer" data-dievalue="6" money-amount="120">Sorcerer (1d6) Proficiency Bonus: Constitution, Charisma</option>
+            <option value="Warlock" data-dievalue="8" money-amount="160">Warlock (1d8) Proficiency Bonus: Wisdom, Charisma</option>
+            <option value="Wizard" data-dievalue="6" money-amount="160">Wizard (1d6) Proficiency Bonus: Intelligence, Wisdom</option>
         </select>
 		
         <label for="backstory">Backstory:</label>
@@ -1696,6 +1686,108 @@ main {
             </div>
         </div>
         <button id="rollStatsBtn">Roll Stats</button>
+
+        <div class="shop">
+          <h1>Equipment Shop</h1>
+          <button onclick="" ontouch="">Back</button>
+          <table align="center" border>
+            <tr>
+              <td>Abacos</td>
+              <td>2 GP</td>
+              <td><input type="checkbox" id="Abacos" value="2"></input></td>
+            </tr>
+            <tr>
+              <td>Acid (Vial)</td>
+              <td>25 GP</td>
+              <td><input type="checkbox" id="Acide" value="25"></input></td>
+            </tr>
+            <tr>
+              <td>Alchemists fire (flask)</td>
+              <td>50 GP</td>
+              <td><input type="checkbox" id="Alchemists-fire" value="50"></input></td>
+            </tr>
+            <tr>
+              <td>Antitoxin (vial)</td>
+              <td>50 GP</td>
+              <td><input type="checkbox" id="Antitoxin" value="50"></input></td>
+            </tr>
+            <tr>
+              <td>Backpack</td>
+              <td>2 GP</td>
+              <td><input type="checkbox" id="Backpack" value="2"></input></td>
+            </tr>
+            <tr>
+              <td>Ball bearings (bag of 1,000)</td>
+              <td>1 GP</td>
+              <td><input type="checkbox" id="Ball-bearings" value="1"></input></td>
+            </tr>
+            <tr>
+              <td>Barrel</td>
+              <td>2 GP</td>
+              <td><input type="checkbox" id="Barrel" value="2"></input></td>
+            </tr>
+            <tr>
+              <td>Basket</td>
+              <td>2 GP</td>
+              <td><input type="checkbox" id="Basket" value="2"></input></td>
+            </tr>
+            <tr>
+              <td>Bedroll</td>
+              <td>1 GP</td>
+              <td><input type="checkbox" id="Bedroll" value="1"></input></td>
+            </tr>
+            <tr>
+              <td>Bell</td>
+              <td>1 GP</td>
+              <td><input type="checkbox" id="Bell" value="1"></input></td>
+            </tr>
+            <tr>
+              <td>Blanket</td>
+              <td>2.5 GP</td>
+              <td><input type="checkbox" id="Blanket" value="2.5"></input></td>
+            </tr>
+            <tr>
+              <td>Block and Tackle</td>
+              <td>1 GP</td>
+              <td><input type="checkbox" id="Block-tackle" value="1"></input></td>
+            </tr>
+            <tr>
+              <td>Book</td>
+              <td>25 GP</td>
+              <td><input type="checkbox" id="Book" value="25"></input></td>
+            </tr>
+            <tr>
+              <td>Bottle,</td>
+              <td>2 GP</td>
+              <td><input type="checkbox" id="Bottle" value="2"></input></td>
+            </tr>
+            <tr>
+              <td>Bucket</td>
+              <td>1.25 GP</td>
+              <td><input type="checkbox" id="Bucket" value="1.25"></input></td>
+            </tr>
+            <tr>
+              <td>Caltrops (bag of 20)</td>
+              <td>1 GP</td>
+              <td><input type="checkbox" id="Caltops" value="1"></input></td>
+            </tr>
+            <tr>
+              <td>Candle</td>
+              <td>0.25 GP</td>
+              <td><input type="checkbox" id="Candle" value="0.25"></input></td>
+            </tr>
+            <tr>
+              <td>Case, crossbow bolt</td>
+              <td>1 GP</td>
+              <td><input type="checkbox" id="Case-crossbow-bolt" value="1"></input></td>
+            </tr>
+            <tr>
+              <td>Rope</td>
+              <td>1 GP</td>
+              <td><input type="checkbox" id="Rope" value="1"></input></td>
+            </tr>
+          </table>
+        </div>
         
         <!-- Armor-->
         <h2>Armor</h2>
@@ -2988,7 +3080,7 @@ ${dwarfInformation} ${hillDwarfInformation} ${mountainDwarfInformation} ${duerga
     pdf.text("Dexterity    " + skills.acrobatics, 65, 88);
     pdf.text("Constitution " + skills.athletics, 65, 96);
     pdf.text("Intelligence " + skills.nature, 65, 104);
-    pdf.text("Wisdom       " + skills.medacine, 65, 112);
+    pdf.text("Wisdom       " + skills.medicine, 65, 112);
     pdf.text("Charisma     " + skills.performance, 65, 120);
     pdf.text("SAVING THROWS", 65, 130);
 
