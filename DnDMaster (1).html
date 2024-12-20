@@ -154,206 +154,705 @@
             }
         }
 
-        @keyframes roll {
-  10% {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  }
-  30% {
-    transform: rotateX(120deg) rotateY(240deg) rotateZ(0deg) translateX(40px) translateY(40px);
-  }
-  50% {
-    transform: rotateX(240deg) rotateY(480deg) rotateZ(0deg) translateX(-40px) translateY(-40px);
-  }
-  70% {
-    transform: rotateX(360deg) rotateY(720deg) rotateZ(0deg);
-  }
-  90% {
-    transform: rotateX(480deg) rotateY(960deg) rotateZ(0deg);
-  }
+        *,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.content {
-  margin: auto auto;
+:root {
+  /*--- Generated with colorshader.com ---*/
+  --steel-0: hsl(230,10%,95%);
+  --steel-1: hsl(230,10%,90%);
+  --steel-2: hsl(230,10%,85%);
+  --steel-3: hsl(230,10%,80%);
+  --steel-4: hsl(230,10%,75%);
+  --steel-5: hsl(230,10%,70%);
+  --steel-6: hsl(230,10%,65%);
+  --steel-7: hsl(230,10%,60%);
+  --steel-8: hsl(230,10%,55%);
+  --steel-9: hsl(230,10%,50%);
+  --steel-10: hsl(230,10%,45%);
+  --steel-11: hsl(230,10%,40%);
+  --steel-12: hsl(230,10%,35%);
+  --steel-13: hsl(230,10%,30%);
+  --steel-14: hsl(230,10%,25%);
+  --steel-15: hsl(230,10%,20%);
+  --steel-16: hsl(230,10%,15%);
+  --steel-17: hsl(230,10%,10%);
+  --steel-18: hsl(230,10%,7%);
+
+  --blue-0: hsl(24,80%,95%);
+  --blue-1: hsl(24,80%,90%);
+  --blue-2: hsl(24,80%,85%);
+  --blue-3: hsl(24,80%,80%);
+  --blue-4: hsl(24,80%,75%);
+  --blue-5: hsl(24,80%,70%);
+  --blue-6: hsl(24,80%,65%);
+  --blue-7: hsl(24,80%,60%);
+  --blue-8: hsl(24,80%,55%);
+  --blue-9: hsl(24,80%,50%);
+  --blue-10: hsl(24,80%,45%);
+  --blue-11: hsl(24,80%,40%);
+  --blue-12: hsl(24,80%,35%);
+  --blue-13: hsl(24,80%,30%);
+  --blue-14: hsl(24,80%,25%);
+  --blue-15: hsl(24,80%,20%);
+  --blue-16: hsl(24,80%,15%);
+  --blue-17: hsl(24,80%,10%);
+  --blue-18: hsl(24, 78%, 7%);
+
+  /*--- set dice size ---*/
+  --dc-size: 100px; /*dice container*/
+  --d6-size: calc(var(--dc-size) * .8);
+  --d8-size: calc(var(--dc-size) * .8);
+  --d10-size: calc(var(--dc-size) * .9);
+  --d12-size: calc(var(--dc-size) * .6);
+  --d20-size: calc(var(--dc-size) * .6);
+  --perspective: calc(var(--dc-size) * 1.70);
+
+}
+
+::selection {
+  color: white;
+}
+
+/*---------- REMOVE DEFAULT NUMBER INCREMENT ARROWS ----------*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 48px;
+  width: 100vw;
+  height: 100vh;
+}
+
+#container-Dice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
   position: relative;
-  width: 200px;
-  height: 200px;
-  perspective: 1500px;
+  /* border: solid 1px red; */
 }
-.die {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease-out;
+
+/*---------- NUMBER INCREMENT ----------*/
+.incr-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+}
+
+.num-incr {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  position: relative;
+  border: solid 3px var(--steel-17);
+  border-radius: 12px;
+  background-color: var(--steel-17);
+}
+
+.num-incr button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 9px;
+  background-color: var(--steel-15);
+}
+
+.num-incr button:hover {
   cursor: pointer;
-  transform: rotateX(-53deg);
+  background-color: var(--steel-13);
 }
-.die.rolling {
-  animation: roll 3s linear;
+
+.num-incr button svg {
+  width: 10px;
+  height: auto;
+  stroke: var(--steel-0);
+  stroke-width: 3px;
+  stroke-linecap: square;
+  stroke-linejoin: square;
 }
-.die[data-face="1"] {
-  transform: rotateX(-53deg) rotateY(0deg);
+
+.num-incr button:hover svg {
+  stroke: var(--steel-0);
 }
-.die[data-face="2"] {
-  transform: rotateX(-53deg) rotateY(72deg);
+
+.num-incr button:focus-visible {
+  outline: solid 1px var(--steel-0);
 }
-.die[data-face="3"] {
-  transform: rotateX(-53deg) rotateY(144deg);
+
+.num-incr button:focus-visible svg {
+  stroke: var(--steel-0);
 }
-.die[data-face="4"] {
-  transform: rotateX(-53deg) rotateY(216deg);
-}
-.die[data-face="5"] {
-  transform: rotateX(-53deg) rotateY(288deg);
-}
-.die[data-face="16"] {
-  transform: rotateX(127deg) rotateY(-72deg);
-}
-.die[data-face="17"] {
-  transform: rotateX(127deg) rotateY(-144deg);
-}
-.die[data-face="18"] {
-  transform: rotateX(127deg) rotateY(-216deg);
-}
-.die[data-face="19"] {
-  transform: rotateX(127deg) rotateY(-288deg);
-}
-.die[data-face="20"] {
-  transform: rotateX(127deg) rotateY(-360deg);
-}
-.die[data-face="6"] {
-  transform: rotateX(11deg) rotateZ(180deg) rotateY(0deg);
-}
-.die[data-face="7"] {
-  transform: rotateX(11deg) rotateZ(180deg) rotateY(72deg);
-}
-.die[data-face="8"] {
-  transform: rotateX(11deg) rotateZ(180deg) rotateY(144deg);
-}
-.die[data-face="9"] {
-  transform: rotateX(11deg) rotateZ(180deg) rotateY(216deg);
-}
-.die[data-face="10"] {
-  transform: rotateX(11deg) rotateZ(180deg) rotateY(288deg);
-}
-.die[data-face="11"] {
-  transform: rotateX(11deg) rotateY(-252deg);
-}
-.die[data-face="12"] {
-  transform: rotateX(11deg) rotateY(-324deg);
-}
-.die[data-face="13"] {
-  transform: rotateX(11deg) rotateY(-396deg);
-}
-.die[data-face="14"] {
-  transform: rotateX(11deg) rotateY(-468deg);
-}
-.die[data-face="15"] {
-  transform: rotateX(11deg) rotateY(-540deg);
-}
-.die .face {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  margin: 0 -50px;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 86px solid rgba(237, 105, 11, 0.937);
-  width: 0px;
-  height: 0px;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  counter-increment: steps 1;
-}
-.die .face:before {
-  content: counter(steps);
-  position: absolute;
-  top: 21.5px;
-  left: -100px;
-  color: #fff;
-  text-shadow: 1px 1px 3px #000;
-  font-size: 43px;
+
+.num-incr input[type=number] {
+  width: 33px;
+  height: 100%;
+  padding: 0px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--steel-0);
   text-align: center;
-  line-height: 77.4px;
-  width: 200px;
-  height: 86px;
-}
-.die .face:nth-child(1) {
-  transform: rotateY(0deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
-}
-.die .face:nth-child(2) {
-  transform: rotateY(-72deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
-}
-.die .face:nth-child(3) {
-  transform: rotateY(-144deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
-}
-.die .face:nth-child(4) {
-  transform: rotateY(-216deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
-}
-.die .face:nth-child(5) {
-  transform: rotateY(-288deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
-}
-.die .face:nth-child(16) {
-  transform: rotateY(-108deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
-}
-.die .face:nth-child(17) {
-  transform: rotateY(-36deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
-}
-.die .face:nth-child(18) {
-  transform: rotateY(36deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
-}
-.die .face:nth-child(19) {
-  transform: rotateY(108deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
-}
-.die .face:nth-child(20) {
-  transform: rotateY(180deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
-}
-.die .face:nth-child(6) {
-  transform: rotateY(360deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
-}
-.die .face:nth-child(7) {
-  transform: rotateY(288deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
-}
-.die .face:nth-child(8) {
-  transform: rotateY(216deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
-}
-.die .face:nth-child(9) {
-  transform: rotateY(144deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
-}
-.die .face:nth-child(10) {
-  transform: rotateY(72deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
-}
-.die .face:nth-child(11) {
-  transform: rotateY(252deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
-}
-.die .face:nth-child(12) {
-  transform: rotateY(324deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
-}
-.die .face:nth-child(13) {
-  transform: rotateY(396deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
-}
-.die .face:nth-child(14) {
-  transform: rotateY(468deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
-}
-.die .face:nth-child(15) {
-  transform: rotateY(540deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+  border: none;
+  border-radius: 0px;
+  background-color: var(--steel-17);
 }
 
-.contentDec {
-  margin: auto auto;
-  position: relative;
-  width: 200px;
-  height: 200px;
-  perspective: 1500px;
+.num-incr input[type=number]:focus-visible {
+  outline: 0px;
 }
-.dieDec {
+
+/*---------- DICE ANIMATION ----------*/
+@keyframes spin {
+  from {
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+  }
+}
+
+/*---------- DICE STYLES ----------*/
+.dice-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  position: relative;
+}
+
+.dice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--dc-size);
+  margin-bottom: 36px;
+}
+
+.outcome-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease-out;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.outcome {
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/*--- adjust for tetra shape ---*/
+.outcome.d4 {
+  transform: translateY(12px);
+}
+
+.roll-button:hover {
   cursor: pointer;
-  transform: rotateX(-53deg);
+}
+
+/*---------- d4 ----------*/
+/*--- ORIGINAL TETRAHEDRON CODE https://codepen.io/web-tiki/pen/wGmWOq?editors=1100 ---*/
+.tetra {
+  position: relative;
+  width: var(--dc-size); 
+  height: calc(var(--dc-size) * .866);
+  margin: 0 auto; 
+  border: none;
+  background: none;
+  transform-style:preserve-3d;
+  transform-origin: 50% 66%;
+  transition: transform 1s ease;
+  /* animation: spin 10s ease-in-out infinite; */
+}
+
+.tetra div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tetra .face:nth-child(1) {
+  transform-origin: 0% 100%;
+  transform: translateZ(calc(var(--dc-size) * -0.33)) rotate(0deg) rotatex(0deg);
+}
+
+/* Rotation of –109.5° is angle(C, M[AB], D), per http://www.f-lohmueller.de/pov_tut/geo/geom_200e.htm, 180° – atan(2 * sqrt(2)) ≈ 109.5° */
+.tetra .face:nth-child(2) {
+  transform-origin: 0% 100%;
+  transform: translateZ(calc(var(--dc-size) * -0.33)) rotate(-60deg) rotatex(-109.5deg);
+}
+.tetra .face:nth-child(3) {
+  transform-origin: 100% 100%;
+  transform: translateZ(calc(var(--dc-size) * -0.33)) rotate(60deg) rotatex(-109.5deg);
+}
+.tetra .face:nth-child(4) {
+  transform-origin: 50% 100%;
+  transform: translateZ(calc(var(--dc-size) * -0.33)) rotate(180deg) rotatex(-109.5deg);
+}
+
+.tetra svg {
+  fill: rgba(0,0,0,0.3);
+  stroke-width: 2px;
+  stroke: var(--blue-6);
+}
+
+/*---------- d6 ----------*/
+.cube {
+  position: relative;
+  width: var(--d6-size); 
+  height: var(--d6-size);
+  margin: 0 auto; 
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  border: none;
+  background: none;
+  transition: transform 1s ease;
+  /* border: solid 1px green; */
+  /* animation: spin 10s ease-in-out infinite; */
+}
+
+.cube div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cube .face:nth-child(1) {
+  transform-origin: 50% 100%;
+  transform: translateZ(calc(var(--d6-size) / 2)) rotatex(0deg);
+}
+
+.cube .face:nth-child(2) {
+  transform-origin: 50% 100%;
+  transform: translateZ(calc(var(--d6-size) / 2)) rotatex(90deg);
+}
+
+.cube .face:nth-child(3) {
+  transform-origin: 0% 50%;
+  transform: translateZ(calc(var(--d6-size) / 2)) rotateY(90deg);
+}
+
+.cube .face:nth-child(4) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d6-size) / 2)) rotatex(-90deg);
+}
+
+.cube .face:nth-child(5) {
+  transform-origin: 100% 50%;
+  transform: translateZ(calc(var(--d6-size) / 2)) rotateY(-90deg);
+}
+
+.cube .face:nth-child(6) {
+  transform-origin: 50% 50%;
+  transform: translateZ(calc(var(--d6-size) / -2));
+}
+
+.cube svg {
+  fill: rgba(0,0,0,0.3);
+  stroke-width: 2px;
+  stroke: var(--blue-6);
+}
+
+/*---------- d8 ----------*/
+.octa {
+  position: relative;
+  width: var(--d8-size); 
+  height: var(--d8-size);
+  margin: 0 auto; 
+  border: none;
+  background: none;
+  transform-style:preserve-3d;
+  transform-origin: 50% 50%;
+  /* transform: rotateX(90deg); */
+  transition: transform 1s ease;
+  /* animation: spin 10s ease-in-out infinite; */
+}
+
+.octa div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(var(--d8-size) * .866);
+}
+
+.octa .face:nth-child(1) {
+  transform-origin: 50% 100%;
+  /* https://en.wikipedia.org/wiki/Platonic_solid#Angles 109.47 / 2 */
+  transform: rotatex(54.74deg);
+}
+
+.octa .face:nth-child(2) {
+  transform-origin: 0% 100%;
+  /* 180 - 54.74 */
+  transform: rotate(-90deg) rotatex(125.26deg);
+}
+
+.octa .face:nth-child(3) {
+  transform-origin: 100% 100%;
+  transform: rotate(90deg) rotatex(125.26deg);
+}
+
+.octa .face:nth-child(4) {
+  top: 0;
+  transform-origin: 50% 0%;
+  transform: rotatex(-54.74deg);
+}
+
+.octa .face:nth-child(5) {
+  top: 0;
+  transform-origin: 50% 0%;
+  transform: rotatex(54.74deg);
+}
+
+.octa .face:nth-child(6) {
+  top: 0;
+  transform-origin: 0% 0%;
+  transform: rotate(90deg) rotatex(125.26deg);
+}
+
+.octa .face:nth-child(7) {
+  top: 0;
+  transform-origin: 100% 0%;
+  transform: rotate(-90deg) rotatex(125.26deg);
+}
+
+.octa .face:nth-child(8) {
+  transform-origin: 50% 100%;
+  transform: rotatex(-54.74deg);
+}
+
+.octa svg {
+  fill: rgba(0,0,0,0.3);
+  stroke-width: 2px;
+  stroke: var(--blue-6);
+}
+
+/*---------- d10 ----------*/
+.pentrap {
+  position: relative;
+  width: var(--d10-size); 
+  height: var(--d10-size);
+  margin: 0 auto; 
+  border: none;
+  background: none;
+  transform-style:preserve-3d;
+  transform-origin: 50% 50%;
+  transition: transform 1s ease;
+  /* animation: spin 10s ease-in-out infinite; */
+}
+
+.pentrap div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 60%;
+  height: auto;
+  /* border: solid 1px cyan; */
+}
+
+.pentrap .face:nth-child(1) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d10-size) * 0.5875)) rotate(0deg) rotatex(-128.18deg);
+}
+
+.pentrap .face:nth-child(2) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d10-size) * 0.5875)) rotate(72deg) rotatex(-128.18deg);
+}
+
+.pentrap .face:nth-child(3) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d10-size) * 0.5875)) rotate(144deg) rotatex(-128.18deg);
+}
+
+.pentrap .face:nth-child(4) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d10-size) * 0.5875)) rotate(216deg) rotatex(-128.18deg);
+}
+
+.pentrap .face:nth-child(5) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d10-size) * 0.5875)) rotate(288deg) rotatex(-128.18deg);
+}
+
+.pentrap .face:nth-child(6) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d10-size) * -0.5875)) rotate(36deg) rotatex(128.18deg);
+}
+
+.pentrap .face:nth-child(7) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d10-size) * -0.5875)) rotate(108deg) rotatex(128.18deg);
+}
+
+.pentrap .face:nth-child(8) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d10-size) * -0.5875)) rotate(180deg) rotatex(128.18deg);
+}
+
+.pentrap .face:nth-child(9) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d10-size) * -0.5875)) rotate(252deg) rotatex(128.18deg);
+}
+
+.pentrap .face:nth-child(10) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d10-size) * -0.58)) rotate(324deg) rotatex(128.18deg);
+}
+
+.pentrap svg {
+  fill: rgba(0,0,0,0.3);
+  stroke-width: 1px;
+  stroke: var(--blue-6);
+}
+
+/*---------- d12 ----------*/
+.dodec {
+  position: relative;
+  width: var(--dc-size); 
+  height: calc(var(--dc-size) * 0.9511);
+  margin: 0 auto; 
+  border: none;
+  background: none;
+  transform-style:preserve-3d;
+  transform-origin: 50% 50%;
+  transition: transform 1s ease;
+  /* border: solid 1px green; */
+  /* animation: spin 10s ease-in-out infinite; */
+}
+
+.dodec div {
+  display: flex;
+  position: absolute;
+  top: 16.75%;
+  left: 19.75%;
+  width: var(--d12-size);
+  height: auto;
+  transform-origin: 50% 55.27%;
+  /* border: solid 1px cyan; */
+}
+
+/*--- TOP ---*/
+.dodec .face:nth-child(1) {
+  transform: translateZ(calc(var(--d12-size) * .69)) rotate(0deg) rotatex(0deg); /* .38 + .31*/
+}
+
+.dodec .face:nth-child(2) {
+  transform: translateY(65%) translateZ(calc(var(--d12-size) * .31)) rotate(180deg) rotatex(63.4deg);
+}
+
+.dodec .face:nth-child(3) {
+  transform: translateX(-58.7%) translateY(20.15%) translateZ(calc(var(--d12-size) * .31)) rotate(-108deg) rotatex(63.4deg);
+}
+
+.dodec .face:nth-child(4) {
+  transform: translateX(58.7%) translateY(20.15%) translateZ(calc(var(--d12-size) * .31)) rotate(108deg) rotatex(63.4deg);
+}
+
+.dodec .face:nth-child(5) {
+  transform: translateX(-36.3%) translateY(-52.45%) translateZ(calc(var(--d12-size) * .31)) rotate(-36deg) rotatex(63.4deg);
+}
+
+.dodec .face:nth-child(6) {
+  transform: translateX(36.3%) translateY(-52.45%) translateZ(calc(var(--d12-size) * .31)) rotate(36deg) rotatex(63.4deg);
+}
+
+/*--- BOTTOM ---*/
+.dodec .face:nth-child(7) {
+  transform: translateZ(calc(var(--d12-size) * -0.69)) rotate(180deg) rotatex(0deg);
+}
+
+.dodec .face:nth-child(8) {
+  transform: translateY(-65%) translateZ(calc(var(--d12-size) * -0.31)) rotate(0deg) rotatex(-63.4deg);
+}
+
+.dodec .face:nth-child(9) {
+  transform: translateX(58.7%) translateY(-20.15%) translateZ(calc(var(--d12-size) * -0.31)) rotate(72deg) rotatex(-63.4deg);
+}
+
+.dodec .face:nth-child(10) {
+  transform: translateX(-58.7%) translateY(-20.15%) translateZ(calc(var(--d12-size) * -0.31)) rotate(-72deg) rotatex(-63.4deg);
+}
+
+.dodec .face:nth-child(11) {
+  transform: translateX(36.3%) translateY(52.45%) translateZ(calc(var(--d12-size) * -0.31)) rotate(144deg) rotatex(-63.4deg);
+}
+
+.dodec .face:nth-child(12) {
+  transform: translateX(-36.3%) translateY(52.45%) translateZ(calc(var(--d12-size) * -0.31)) rotate(-144deg) rotatex(-63.4deg);
+}
+
+.dodec svg {
+  fill: rgba(0,0,0,0.3);
+  stroke-width: 2px;
+  stroke: var(--blue-6);
+}
+
+/*---------- d20 ----------*/
+.icosa {
+  position: relative;
+  width: var(--dc-size); 
+  height: var(--dc-size);
+  margin: 0 auto; 
+  transform-style:preserve-3d;
+  transform-origin: 50% 50%;
+  border: none;
+  background: none;
+  transition: transform 1s ease;
+  /* animation: spin 10s ease-in-out infinite; */
+}
+
+.icosa div {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 19.75%;
+  width: var(--d20-size);
+  height: calc(var(--d20-size) * .866);
+  /* border: solid 1px cyan; */
+}
+
+/* TOP */
+.icosa .face:nth-child(1) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d20-size) * 0.95)) rotatex(-37.35deg); /* .95 */
+}
+
+.icosa .face:nth-child(2) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d20-size) * 0.95)) rotate(72deg) rotatex(-37.35deg);
+}
+
+.icosa .face:nth-child(3) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d20-size) * 0.95)) rotate(144deg) rotatex(-37.35deg);
+}
+
+.icosa .face:nth-child(4) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d20-size) * 0.95)) rotate(216deg) rotatex(-37.35deg);
+}
+
+.icosa .face:nth-child(5) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d20-size) * 0.95)) rotate(288deg) rotatex(-37.35deg);
+}
+
+/* TOP MIDDLE */
+.icosa .face:nth-child(6) {
+  transform-origin: 50% 100%;
+  transform: translateY(-20.5%) translateZ(calc(var(--d20-size) * 0.425)) rotate(180deg) rotatex(79.2deg); /* .425 */
+}
+
+.icosa .face:nth-child(7) {
+  transform-origin: 50% 100%;
+  transform: translateX(-65.5%) translateY(-75.5%) translateZ(calc(var(--d20-size) * 0.425)) rotate(-108deg) rotatex(79.2deg);
+}
+
+.icosa .face:nth-child(8) {
+  transform-origin: 50% 100%;
+  transform: translateX(65.5%) translateY(-75.5%) translateZ(calc(var(--d20-size) * 0.425)) rotate(108deg) rotatex(79.2deg);
+}
+
+.icosa .face:nth-child(9) {
+  transform-origin: 50% 100%;
+  transform: translateX(-40.5%) translateY(-164.3%) translateZ(calc(var(--d20-size) * 0.425)) rotate(-36deg) rotatex(79.2deg);
+}
+
+.icosa .face:nth-child(10) {
+  transform-origin: 50% 100%;
+  transform: translateX(40.5%) translateY(-164.3%) translateZ(calc(var(--d20-size) * 0.425)) rotate(36deg) rotatex(79.2deg);
+}
+
+/* BOTTOM */
+.icosa .face:nth-child(11) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d20-size) * -0.95)) rotate(180deg) rotatex(37.35deg);
+}
+
+.icosa .face:nth-child(12) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d20-size) * -0.95)) rotate(108deg) rotatex(37.35deg);
+}
+
+.icosa .face:nth-child(13) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d20-size) * -0.95)) rotate(36deg) rotatex(37.35deg);
+}
+
+.icosa .face:nth-child(14) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d20-size) * -0.95)) rotate(252deg) rotatex(37.35deg);
+}
+
+.icosa .face:nth-child(15) {
+  transform-origin: 50% 0%;
+  transform: translateZ(calc(var(--d20-size) * -0.95)) rotate(324deg) rotatex(37.35deg);
+}
+
+/* BOTTOM MIDDLE */
+.icosa .face:nth-child(16) {
+  transform-origin: 50% 100%;
+  transform: translateY(-179.5%) translateZ(calc(var(--d20-size) * -0.425)) rotate(0deg) rotatex(-79.2deg);
+}
+
+.icosa .face:nth-child(17) {
+  transform-origin: 50% 100%;
+  transform: translateX(-65.5%) translateY(-124.5%) translateZ(calc(var(--d20-size) * -0.425)) rotate(-72deg) rotatex(-79.2deg);
+}
+
+.icosa .face:nth-child(18) {
+  transform-origin: 50% 100%;
+  transform: translateX(65.5%) translateY(-124.5%) translateZ(calc(var(--d20-size) * -0.425)) rotate(72deg) rotatex(-79.2deg);
+}
+
+.icosa .face:nth-child(19) {
+  transform-origin: 50% 100%;
+  transform: translateX(-40.5%) translateY(-35.7%) translateZ(calc(var(--d20-size) * -0.425)) rotate(-144deg) rotatex(-79.2deg);
+}
+
+.icosa .face:nth-child(20) {
+  transform-origin: 50% 100%;
+  transform: translateX(40.5%) translateY(-35.7%) translateZ(calc(var(--d20-size) * -0.425)) rotate(144deg) rotatex(-79.2deg);
+}
+
+.icosa svg {
+  fill: rgba(0,0,0,0.3);
+  stroke-width: 2px;
+  stroke: var(--blue-6);
 }
 
 ul {
@@ -526,32 +1025,189 @@ main {
         <h1>DND Master</h1>
         <button onclick="showSection('characterGen')"><img src="https://i.pinimg.com/474x/da/43/c6/da43c660e6b2817e4c03990c2503abfa.jpg"><p>Character Generator</p></button>
         <button onclick="showSection('spellGuide')"><img src="https://ih1.redbubble.net/image.4574751503.0086/aps,504x498,medium,transparent-pad,600x600,f8f8f8.u1.webp"><p>Spell Book</p></button>
-        <div class="content">
-            <div class="die" data-face="1">
-              <figure class="face face-1"></figure>
-              <figure class="face face-2"></figure>
-              <figure class="face face-3"></figure>
-              <figure class="face face-4"></figure>
-              <figure class="face face-5"></figure>
-              <figure class="face face-6"></figure>
-              <figure class="face face-7"></figure>
-              <figure class="face face-8"></figure>
-              <figure class="face face-9"></figure>
-              <figure class="face face-10"></figure>
-              <figure class="face face-11"></figure>
-              <figure class="face face-12"></figure>
-              <figure class="face face-13"></figure>
-              <figure class="face face-14"></figure>
-              <figure class="face face-15"></figure>
-              <figure class="face face-16"></figure>
-              <figure class="face face-17"></figure>
-              <figure class="face face-18"></figure>
-              <figure class="face face-19"></figure>
-              <figure class="face face-20"></figure>
+        <div id="container-Dice">
+          <!-- d4 -->
+          <div class="dice-cont">
+            <div class="dice">
+              <span class="outcome-cont"><h3 class="outcome d4"></h3></span>
+              <button class="tetra roll-button" data-min="1" data-max="4" style="transform:rotateX(0deg) rotateY(180deg) rotateZ(0deg);">
+                <div class="face"><svg viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+              </button>
+            </div>
+            <div class="incr-cont">
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"  class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="1" class="num dice-num">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="0" class="num modifier">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
             </div>
           </div>
-        
-          <a href="#" class="randomize">Roll!</a>
+          <!-- d6 -->
+          <div class="dice-cont">
+            <div class="dice">
+              <span class="outcome-cont"><h3 class="outcome"></h3></span>
+              <button class="cube roll-button" data-min="1" data-max="6" style="transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);">
+                <div class="face"><svg class="square" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100%" height="100%"/></svg></div>
+                <div class="face"><svg class="square" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100%" height="100%"/></svg></div>
+                <div class="face"><svg class="square" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100%" height="100%"/></svg></div>
+                <div class="face"><svg class="square" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100%" height="100%"/></svg></div>
+                <div class="face"><svg class="square" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100%" height="100%"/></svg></div>
+                <div class="face"><svg class="square" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100%" height="100%"/></svg></div>
+              </button>
+            </div>
+            <div class="incr-cont">
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"  class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="1" class="num dice-num">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="0" class="num modifier">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+            </div>
+          </div>
+          <!-- d8 -->
+          <div class="dice-cont">
+            <div class="dice">
+              <span class="outcome-cont"><h3 class="outcome"></h3></span>
+              <button class="octa roll-button" data-min="1" data-max="8" style="transform:rotateX(90deg) rotateY(0deg) rotateZ(0deg);">
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-d" viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M200,0l-100,173.205l-100,-173.205l200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-d" viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M200,0l-100,173.205l-100,-173.205l200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-d" viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M200,0l-100,173.205l-100,-173.205l200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-d" viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M200,0l-100,173.205l-100,-173.205l200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 174" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+              </button>
+            </div>
+            <div class="incr-cont">
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"  class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="1" class="num dice-num">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="0" class="num modifier">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+            </div>
+          </div>
+          <!-- d10 -->
+          <div class="dice-cont">
+            <div class="dice">
+              <span class="outcome-cont"><h3 class="outcome"></h3></span>
+              <button class="pentrap roll-button" data-min="1" data-max="10" style="transform:rotateX(90deg) rotateY(0deg) rotateZ(0deg);">
+                <div class="face"><svg viewBox="0 0 88.167 121.331" xmlns="http://www.w3.org/2000/svg"><polygon points="44.083,0 88.167,98.157 44.083,121.331 0,98.157"/></svg></div>
+                <div class="face"><svg viewBox="0 0 88.167 121.331" xmlns="http://www.w3.org/2000/svg"><polygon points="44.083,0 88.167,98.157 44.083,121.331 0,98.157"/></svg></div>
+                <div class="face"><svg viewBox="0 0 88.167 121.331" xmlns="http://www.w3.org/2000/svg"><polygon points="44.083,0 88.167,98.157 44.083,121.331 0,98.157"/></svg></div>
+                <div class="face"><svg viewBox="0 0 88.167 121.331" xmlns="http://www.w3.org/2000/svg"><polygon points="44.083,0 88.167,98.157 44.083,121.331 0,98.157"/></svg></div>
+                <div class="face"><svg viewBox="0 0 88.167 121.331" xmlns="http://www.w3.org/2000/svg"><polygon points="44.083,0 88.167,98.157 44.083,121.331 0,98.157"/></svg></div>
+                <div class="face"><svg viewBox="0 0 88.167 121.331" xmlns="http://www.w3.org/2000/svg"><polygon points="44.083,0 88.167,98.157 44.083,121.331 0,98.157"/></svg></div>
+                <div class="face"><svg viewBox="0 0 88.167 121.331" xmlns="http://www.w3.org/2000/svg"><polygon points="44.083,0 88.167,98.157 44.083,121.331 0,98.157"/></svg></div>
+                <div class="face"><svg viewBox="0 0 88.167 121.331" xmlns="http://www.w3.org/2000/svg"><polygon points="44.083,0 88.167,98.157 44.083,121.331 0,98.157"/></svg></div>
+                <div class="face"><svg viewBox="0 0 88.167 121.331" xmlns="http://www.w3.org/2000/svg"><polygon points="44.083,0 88.167,98.157 44.083,121.331 0,98.157"/></svg></div>
+                <div class="face"><svg viewBox="0 0 88.167 121.331" xmlns="http://www.w3.org/2000/svg"><polygon points="44.083,0 88.167,98.157 44.083,121.331 0,98.157"/></svg></div>
+              </button>
+            </div>
+            <div class="incr-cont">
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"  class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="1" class="num dice-num">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="0" class="num modifier">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+            </div>
+          </div>
+          <!-- d12 -->
+          <div class="dice-cont">
+            <div class="dice">
+              <span class="outcome-cont"><h3 class="outcome"></h3></span>
+              <button class="dodec roll-button" data-min="1" data-max="12" style="transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);">
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+                <div class="face"><svg viewBox="0 0 200 190.211" xmlns="http://www.w3.org/2000/svg"><polygon points="38.197,190.211 0,72.655 100,0 200,72.655 161.803,190.211 "/></svg></div>
+              </button>
+            </div>
+            <div class="incr-cont">
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"  class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="1" class="num dice-num">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="0" class="num modifier">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+            </div>
+          </div>
+          <!-- d20 -->
+          <div class="dice-cont">
+            <div class="dice">
+              <span class="outcome-cont"><h3 class="outcome"></h3></span>
+              <button class="icosa roll-button" data-min="1" data-max="20" style="transform:rotateX(90deg) rotateY(0deg) rotateZ(0deg);">
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+                <div class="face"><svg class="tri-u" viewBox="0 0 200 173.205" xmlns="http://www.w3.org/2000/svg"><path d="M0,173.205l100,-173.205l100,173.205l-200,0Z"/></svg></div>
+              </button>
+            </div>
+            <div class="incr-cont">
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"  class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="1" class="num dice-num">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+              <div class="num-incr">
+                <button class="num-minus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <input type="number" value="0" class="num modifier">
+                <button class="num-plus"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              </div>
+            </div>
+          </div>
+      
+        </div>
     </div>
      <div id="spellGuide">
         <h1>DND Spell Guide</h1>
@@ -1060,47 +1716,95 @@ main {
     </div>
     <script>
 
-const die = document.querySelector('.die');
-    const randomizeButton = document.querySelector('.randomize');
-    let lastFace = 1;
-    const sides = 20;
-    const animationDuration = 3000;
-
-    function randomFace() {
-      let face = Math.floor(Math.random() * sides) + 1;
-      while (face === lastFace) {
-        face = Math.floor(Math.random() * sides) + 1;
+function rollButtons() {
+  const xReg = /X\((.*?)\)/;
+  const yReg = /Y\((.*?)\)/;
+  const zReg = /Z\((.*?)\)/;
+  // positive lookbehind not supported in all browsers
+  // (?<=Z\()[0-9]+
+  let rollBtn = document.querySelectorAll('.roll-button');
+  rollBtn.forEach((button) => {
+    button.addEventListener('click', () => {
+      const deg = 360;
+      // check if element is one that is already rotated on the X axis by default
+      if( button.classList.contains('octa') || button.classList.contains('pentrap') || button.classList.contains('icosa')) {
+        rotate(button,'Z',zReg,deg);
+      } else {
+        rotate(button,'Y',yReg,deg);
       }
-      lastFace = face;
-      return face;
-    }
+      const min = button.getAttribute('data-min');
+      const max = button.getAttribute('data-max');
+      const parent = button.parentElement;
+      const dice = Number(parent.parentElement.querySelector('.dice-num').value);
+      const mod = Number(parent.parentElement.querySelector('.modifier').value);
 
-    function rollTo(face) {
-      die.setAttribute('data-face', face);
-    }
+      const outcome = parent.parentElement.querySelector('.outcome');
+      //console.log(`min: ${min}, max: ${max}, dice: ${dice}, mod: ${mod}`);
+      // roll(min value, max value, number of dice, modifier)
+      console.log( roll(min, max, dice, mod) );
 
-    function reset() {
-      die.removeAttribute('data-face');
-      die.classList.remove('rolling');
-    }
-
-    function rollDie() {
-      reset();
-      die.classList.add('rolling');
       setTimeout(() => {
-        die.classList.remove('rolling');
-        rollTo(randomFace());
-      }, animationDuration);
-    }
-
-    randomizeButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      rollDie();
+        outcome.innerText = roll(min, max, dice, mod);
+      }, 900);
     });
+  });
+}
+rollButtons();
 
-    die.addEventListener('click', () => {
-      rollDie();
+// random inclusive number function
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+}
+
+// dice rolll function
+function roll(min, max, dice, mod) {
+  let num = [];
+  let i = 0;
+  do {
+    i = i + 1;
+    num.push(getRandomIntInclusive(min, max));
+  } while (i < dice);
+  const sum = (num.reduce((partialSum, a) => partialSum + a, 0)) + mod;
+  //console.log(num);
+  //console.log(sum);
+  return sum;
+}
+
+// rotate function
+function rotate(element,axis,reg,degree) {
+  if( element.style.transform === '' ) {
+    element.style.transform = 'rotateX(0deg) rotateY(0deg) rotateZ(0deg)';
+  }
+  const transform = element.style.transform;
+  //need to get current value
+  let currentDegree = transform.match(reg);
+  currentDegree = Number(currentDegree[0].match( /[0-9]+/ ));
+  const deg = degree + currentDegree;
+  element.style.transform = transform.replace(reg, `${axis}(${deg}deg)`);
+}
+
+// number increment function
+function numberIncrements() {
+  const numMinus = document.querySelectorAll('.num-minus');
+  const numPlus = document.querySelectorAll('.num-plus');
+
+  numMinus.forEach((button) => {
+    button.addEventListener('click', function() {
+      const input = this.parentElement.querySelector('.num');
+      input.value--;
     });
+  });
+
+  numPlus.forEach((button) => {
+    button.addEventListener('click', function() {
+      const input = this.parentElement.querySelector('.num');
+      input.value++;
+    });
+  });
+}
+numberIncrements();
 const proficiencyBonus = 2;
 
 document.getElementById("generateCharacterBtn").addEventListener("click", generateCharacterSheet);
