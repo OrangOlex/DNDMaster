@@ -2194,6 +2194,9 @@ Primary Weapon: \n${weaponDetails.best}
 Secondary Weapon: \n${weaponDetails.simple}
 
 Spells: \n${spellDetails.spells}
+
+Cantrips: \n${spellDetails.cantrips}
+
 `;
 
 const characterTraits =`
@@ -2270,7 +2273,7 @@ ${dwarfInformation} ${hillDwarfInformation} ${mountainDwarfInformation} ${duerga
     pdf.rect(60, 40, 20, 20);
     pdf.text("" + proficiencyBonus, 70, 50);
     pdf.rect(80, 42, 70, 15);
-    pdf.text("Proficiency Bonus", 82, 50)
+    pdf.text("Proficiency Bonus", 82, 50);
 
     pdf.rect(60, 140, 90, 270);
     pdf.rect(60, 70, 90, 68);
@@ -2280,14 +2283,14 @@ ${dwarfInformation} ${hillDwarfInformation} ${mountainDwarfInformation} ${duerga
     pdf.text("Strength     " + skills.athletics, 65, 80);
     pdf.text("Dexterity    " + skills.acrobatics, 65, 88);
     pdf.text("Constitution " + skills.athletics, 65, 96);
-    pdf.text("Intelligence " + skills.athletics, 65, 104);
-    pdf.text("Wisdom       " + skills.athletics, 65, 112);
-    pdf.text("Charisma     " + skills.athletics, 65, 120);
+    pdf.text("Intelligence " + skills.nature, 65, 104);
+    pdf.text("Wisdom       " + skills.medacine, 65, 112);
+    pdf.text("Charisma     " + skills.performance, 65, 120);
     pdf.text("SAVING THROWS", 65, 130);
 
     const x1 = 170;
     const y1 = 200;
-    const boxWidth1 = 165;
+    const boxWidth1 = 140;
     const boxHeight1 = 200;
 
     const lines1 = pdf.splitTextToSize(attacks1, boxWidth1);
