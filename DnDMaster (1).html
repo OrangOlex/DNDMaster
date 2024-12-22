@@ -1568,8 +1568,8 @@ main {
         <input type="text" id="charName" placeholder="Enter character name" required>
         
         <label for="race">Race:</label>
-        <select id="race">
-            <option value="Dwarf" data-speed="25">Dwarf</option>
+        <select id="race" onchange="showAlert()">
+      <option value="Dwarf" data-speed="25">Dwarf</option>
 			<option value="Hill Dwarf" data-speed="25">Hill Dwarf</option>
 			<option value="Mountain Dwarf" data-speed="25">Mountain Dwarf</option>
 			<option value="Duergar" data-speed="25">Duergar</option>
@@ -1625,7 +1625,7 @@ main {
         </select>
 
         <label for="class">Class:</label>
-        <select id="class">
+        <select id="class" onchange="showCAlert()">
             <option value="null" data-dievalue="0" money-amount="00">None Chosen</option>
             <option value="Barbarian" data-dievalue="12" money-amount="80">Barbarian (1d12) Proficiency Bonus: Strength, Constitution</option>
             <option value="Bard" data-dievalue="8" money-amount="200">Bard (1d8) Proficiency Bonus: Dexterity, Charisma</option>
@@ -1686,108 +1686,6 @@ main {
             </div>
         </div>
         <button id="rollStatsBtn">Roll Stats</button>
-
-        <div class="shop">
-          <h1>Equipment Shop</h1>
-          <button onclick="" ontouch="">Back</button>
-          <table align="center" border>
-            <tr>
-              <td>Abacos</td>
-              <td>2 GP</td>
-              <td><input type="checkbox" id="Abacos" value="2"></input></td>
-            </tr>
-            <tr>
-              <td>Acid (Vial)</td>
-              <td>25 GP</td>
-              <td><input type="checkbox" id="Acide" value="25"></input></td>
-            </tr>
-            <tr>
-              <td>Alchemists fire (flask)</td>
-              <td>50 GP</td>
-              <td><input type="checkbox" id="Alchemists-fire" value="50"></input></td>
-            </tr>
-            <tr>
-              <td>Antitoxin (vial)</td>
-              <td>50 GP</td>
-              <td><input type="checkbox" id="Antitoxin" value="50"></input></td>
-            </tr>
-            <tr>
-              <td>Backpack</td>
-              <td>2 GP</td>
-              <td><input type="checkbox" id="Backpack" value="2"></input></td>
-            </tr>
-            <tr>
-              <td>Ball bearings (bag of 1,000)</td>
-              <td>1 GP</td>
-              <td><input type="checkbox" id="Ball-bearings" value="1"></input></td>
-            </tr>
-            <tr>
-              <td>Barrel</td>
-              <td>2 GP</td>
-              <td><input type="checkbox" id="Barrel" value="2"></input></td>
-            </tr>
-            <tr>
-              <td>Basket</td>
-              <td>2 GP</td>
-              <td><input type="checkbox" id="Basket" value="2"></input></td>
-            </tr>
-            <tr>
-              <td>Bedroll</td>
-              <td>1 GP</td>
-              <td><input type="checkbox" id="Bedroll" value="1"></input></td>
-            </tr>
-            <tr>
-              <td>Bell</td>
-              <td>1 GP</td>
-              <td><input type="checkbox" id="Bell" value="1"></input></td>
-            </tr>
-            <tr>
-              <td>Blanket</td>
-              <td>2.5 GP</td>
-              <td><input type="checkbox" id="Blanket" value="2.5"></input></td>
-            </tr>
-            <tr>
-              <td>Block and Tackle</td>
-              <td>1 GP</td>
-              <td><input type="checkbox" id="Block-tackle" value="1"></input></td>
-            </tr>
-            <tr>
-              <td>Book</td>
-              <td>25 GP</td>
-              <td><input type="checkbox" id="Book" value="25"></input></td>
-            </tr>
-            <tr>
-              <td>Bottle,</td>
-              <td>2 GP</td>
-              <td><input type="checkbox" id="Bottle" value="2"></input></td>
-            </tr>
-            <tr>
-              <td>Bucket</td>
-              <td>1.25 GP</td>
-              <td><input type="checkbox" id="Bucket" value="1.25"></input></td>
-            </tr>
-            <tr>
-              <td>Caltrops (bag of 20)</td>
-              <td>1 GP</td>
-              <td><input type="checkbox" id="Caltops" value="1"></input></td>
-            </tr>
-            <tr>
-              <td>Candle</td>
-              <td>0.25 GP</td>
-              <td><input type="checkbox" id="Candle" value="0.25"></input></td>
-            </tr>
-            <tr>
-              <td>Case, crossbow bolt</td>
-              <td>1 GP</td>
-              <td><input type="checkbox" id="Case-crossbow-bolt" value="1"></input></td>
-            </tr>
-            <tr>
-              <td>Rope</td>
-              <td>1 GP</td>
-              <td><input type="checkbox" id="Rope" value="1"></input></td>
-            </tr>
-          </table>
-        </div>
         
         <!-- Armor-->
         <h2>Armor</h2>
@@ -1807,7 +1705,103 @@ main {
         </div>
     </div>
     <script>
+        function showAlert() {
+            var dropdown = document.getElementById("race");
+            var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+            
+            // Define different text based on the selected option
+            var message = "";
+            if (selectedOption === "Dwarf") {
+                message = "You selected the dwarf. Dwarves are a stout and resilient race in Dungeons & Dragons, known for their toughness, craftsmanship, and strong connection to the earth. Typically standing around 4 to 5 feet tall, they have broad, muscular builds and are known for their long lifespans, often living for centuries. Dwarves are skilled miners, stoneworkers, and smiths, creating finely crafted weapons, armor, and structures. Their society is often built around strongholds, deep in mountains or underground, and they value tradition, honor, and the bonds of family. Dwarves are also known for their unwavering determination, stubbornness, and a deep sense of loyalty to their kin and allies. Many dwarves are formidable fighters, with a strong affinity for battle axes, war hammers, and shields, making them tough opponents in combat. They also have natural resistance to poison and are well-versed in underground survival.";
+            } else if (selectedOption === "Hill Dwarf") {
+                message = "You selected the hill dwarf. Hill Dwarves are a subrace of dwarves that have adapted to life in more temperate, hilly regions rather than the deep mountains. They are known for their resilience and connection to the land, living in villages or strongholds built into rolling hills and fertile plains. Hill Dwarves tend to be more focused on farming, crafting, and trade, though they still maintain the typical dwarven love for fine craftsmanship and brewing. Physically, they are similar to other dwarves, with stocky builds and a strong sense of tradition. Hill Dwarves are particularly noted for their exceptional wisdom and endurance, both mentally and physically. They have a natural resistance to disease and gain an additional boost to their constitution, making them even tougher than other dwarves in terms of health. Hill Dwarves value their close-knit communities, where family ties are strong and everyone looks out for one another. In combat, they’re often seen as resilient and tough, able to withstand a lot of damage while supporting their allies.";
+              } else if (selectedOption === "Mountain Dwarf") {
+                message = "You selected the mountain dwarf. Mountain Dwarves are a subrace of dwarves known for their strength and their connection to the harsh, rocky mountains. They are often found living in grand fortresses built deep in the mountains, where they are expert miners, stonecutters, and blacksmiths. Mountain Dwarves are larger and more muscular than other dwarves, and they tend to have a more martial culture, focusing on war and defense. They are skilled warriors, favoring heavy armor and powerful weapons like axes and warhammers. In addition to their natural resistance to poison, they also have enhanced strength, making them formidable in battle.";
+            } else if (selectedOption === "Duergar") {
+                message = "You selected the duergar. Duergar, also known as gray dwarves, are a twisted, malevolent subrace of dwarves that dwell in the Underdark. Unlike their surface-dwelling kin, duergar are typically evil and cruel, often driven by hatred and a thirst for power. They are known for their grim, colorless appearance and their ability to magically enlarge themselves in battle. Duergar are skilled in mining and smithing, particularly in crafting weapons and armor that are infused with dark magic. While they may be less resilient to poison than other dwarves, their cunning and magic make them dangerous foes in combat.";
+            } else if (selectedOption === "Elf") {
+                message = "You selected the elf. Elves are a graceful and long-lived race known for their keen senses, magical aptitude, and deep connection to nature. Elves tend to live in forests, hidden enclaves, or in cities that blend harmoniously with the natural world. They are known for their agility, keen sight, and advanced skill in archery and magic. Elves live for centuries, often holding onto ancient knowledge and wisdom. Their societies are often egalitarian and they deeply value beauty, art, and the preservation of nature. In combat, elves are swift and precise, often relying on finesse over brute strength.";
+            } else if (selectedOption === "Dark Elf") {
+                message = "You selected the dark elf. Dark Elves, or drow, are a sinister and enigmatic subrace of elves that live in the Underdark. Known for their dark skin, white or silver hair, and piercing red eyes, the drow have a reputation for cruelty, treachery, and manipulation. They are skilled in both magic and combat, often wielding poison and shadows to their advantage. Drow society is matriarchal and driven by the worship of Lolth, the Spider Queen. Although they are highly intelligent and powerful, drow are often mistrusted by surface dwellers due to their history of violence and betrayal.";
+            } else if (selectedOption === "Avariel") {
+                message = "You selected the avariel. Avariel are a rare and noble subrace of elves with the gift of flight. These elves have wings, allowing them to soar through the skies with ease. Their graceful, bird-like features set them apart from other elves, and they are often associated with freedom and exploration. Avariel are usually found in remote, high-altitude regions, living in aerial cities or among the treetops. They are skilled in archery, magic, and aerial combat. Due to their rarity, avariel are often considered mysterious and ethereal by those who encounter them.";
+            } else if (selectedOption === "Eladrin") {
+                message = "You selected the eladrin. Eladrin are an ancient and mystical subrace of elves with a strong connection to the Feywild, a parallel realm of raw magic and unpredictable emotion. Eladrin are known for their ability to shift their appearance and demeanor based on the seasons, reflecting the changing nature of the Feywild itself. This connection to the Feywild grants them magical abilities, and they are often skilled in enchantment and illusion. Eladrin are elegant, mysterious, and often embody the whimsy and capriciousness of the fey. In combat, they are swift, unpredictable, and masters of both magic and martial arts.";
+            } else if (selectedOption === "Halfling") {
+                message = "You selected the halfling. Halflings are a small and nimble race, standing around 3 feet tall with a strong sense of community and a love for comfort and simplicity. Known for their luck and cheerful demeanor, halflings are often found in rural villages or close-knit communities, living simple, peaceful lives. They are quick, stealthy, and resilient, with a natural ability to avoid danger. Halflings are known for their courage despite their small size, and many make excellent adventurers, whether as rogues, bards, or fighters. Their luck seems to protect them in even the most dangerous situations.";
+            } else if (selectedOption === "Human") {
+                message = "You selected the human. Humans are a versatile and adaptable race, known for their drive, ambition, and rapid population growth. Standing between 5 and 6 feet tall, humans come in a wide range of physical appearances and cultural backgrounds. They are capable of mastering almost any skill or profession, and many humans are adventurers seeking to make their mark on the world. Humans are often the most populous race in any region, creating diverse societies filled with innovation, conflict, and change. They are ambitious and persistent, often rising to greatness through sheer willpower.";
+            } else if (selectedOption === "Dragonborn") {
+                message = "You selected the dragonborn. Dragonborn are a proud and honorable race descended from dragons, known for their draconic features and natural affinity with elemental energy. Standing over 6 feet tall, dragonborn possess scales that shimmer in various colors, with their draconic ancestry influencing both their appearance and abilities. They are formidable warriors, often wielding breath weapons that allow them to unleash blasts of fire, cold, or other elements. Dragonborn value honor and loyalty, and many choose to follow a code of conduct or a personal oath. They are brave, strong, and capable of great feats of strength and courage.";
+            } else if (selectedOption === "Gnome") {
+                message = "You selected the gnome. Gnomes are a small, curious, and highly intelligent race known for their love of invention and their keen understanding of magic. Standing around 3 to 4 feet tall, gnomes are known for their sharp minds and inventive nature, often creating fantastical machines or enchanting objects to make life easier or more fun. Gnomes value knowledge, curiosity, and creativity, and many are skilled in magic, particularly illusion and transmutation. Despite their small stature, gnomes are brave and resourceful adventurers, always eager to discover new things and solve complex problems.";
+            } else if (selectedOption === "Rock Gnome") {
+                message = "You selected the rock gnome. Rock gnomes are a subrace of gnomes known for their connection to the earth and their love of craftsmanship. They are particularly skilled in creating intricate mechanical devices and are often found working with metal, stone, and gems. Rock gnomes tend to be quiet and reserved, but they have a natural curiosity and love for tinkering. Their inventions often combine magic and technology, making them invaluable to adventuring parties seeking new solutions to complex problems. They are also known for their deep connection to their families and communities.";
+            } else if (selectedOption === "Half Elf") {
+                message = "You selected the half elf. Half-elves are a hybrid race born from the union of humans and elves, combining the best traits of both. They inherit the grace and longevity of elves, along with the adaptability and ambition of humans. Half-elves are often seen as outsiders, neither fully accepted by elves nor humans, which makes them versatile and adaptable in any situation. They are skilled diplomats, often excelling in roles that require charm and persuasion. Half-elves are also known for their magical potential, combining the magical aptitude of elves with the flexibility of human abilities.";
+            } else if (selectedOption === "Half Orc") {
+                message = "You selected the half orc. Half-orcs are the offspring of humans and orcs, blending the physical strength and resilience of orcs with the adaptability and cunning of humans. They are often seen as fierce warriors, known for their brutal combat skills and savage fury. Half-orcs tend to stand tall, with muscular builds and tusked faces, and they are often more inclined to embrace their orcish heritage, though some strive to prove their worth among humans. Half-orcs are naturally strong and resilient, able to endure great hardships and fight with ferocity. Many seek to find their place in the world, navigating the complexities of their dual heritage.";
+            } else if (selectedOption === "Tiefling") {
+                message = "You selected the tiefling. Tieflings are a race of humanoids with infernal ancestry, often bearing fiendish traits like horns, tails, and red or purple skin. They are often seen as outsiders or even villains due to their demonic heritage, but many tieflings reject this stigma and seek to prove themselves as individuals. Tieflings possess natural magical abilities, including resistance to fire damage and the potential to wield powerful infernal magic. Despite their fiendish appearance, tieflings are as varied as any other race, with some choosing to embrace their heritage, while others seek redemption and a different path.";
+            } else if (selectedOption === "Aasimar") {
+                message = "You selected the aasimar. Aasimars are celestial beings born of human ancestry, often marked by their radiant beauty and a divine purpose. They are often viewed as agents of good, with a strong connection to celestial realms and divine powers. Aasimars typically possess an aura of otherworldly grace, with golden or silver eyes and glowing features. They are often gifted with healing or radiant magic and have a natural resistance to necrotic damage. Many aasimar are chosen to be champions of good, using their divine abilities to fight against evil and protect the innocent.";
+            } else if (selectedOption === "Fallen Aasimar") {
+                message = "You selected the fallen aasimar. Fallen aasimar are those whose celestial bloodline has become corrupted, leading them down a darker, more twisted path. Unlike their noble cousins, fallen aasimar are often burdened with a sense of inner turmoil, struggling between their divine heritage and their darker tendencies. They are still powerful beings with celestial origins, but their connection to the divine has been tainted, often granting them powers related to shadows and darkness. Fallen aasimar are sometimes seen as tragic figures, struggling to maintain their sense of identity in the face of their corrupted nature.";
+            } else if (selectedOption === "Lizardfolk") {
+                message = "You selected the lizardfolk. Lizardfolk are reptilian humanoids known for their primal instincts and deep connection to the swamps and marshes where they make their homes. Lizardfolk are physically powerful and have a natural affinity for survival in harsh environments. Their tough scales provide natural armor, and they are skilled hunters, often using weapons like spears, shields, and bows. Lizardfolk have little concept of good or evil, operating instead on survival instincts and the need to protect their tribe. They are highly capable combatants and hunters, often driven by a sense of duty to their people.";
+            } else if (selectedOption === "Tabaxi") {
+                message = "You selected the tabaxi. Tabaxi are a race of feline humanoids known for their agility, curiosity, and love of exploration. With their cat-like features, including fur, sharp claws, and keen senses, tabaxi are excellent hunters, trackers, and acrobats. They are known for their adventurous spirit, often roaming the world in search of new experiences and treasures. Tabaxi value stories and often collect tales from their travels, making them excellent bards and performers. In combat, they rely on speed, stealth, and agility, using their natural claws and quick reflexes to overwhelm opponents.";
+            } else if (selectedOption === "Bugbear") {
+                message = "You selected the bugbear. Bugbears are large, brutish goblinoids known for their incredible strength, stealth, and violent nature. Standing over 7 feet tall, bugbears are powerful fighters who excel in ambush tactics and surprise attacks. Despite their intimidating appearance, bugbears can be surprisingly stealthy, using their size and agility to sneak up on unsuspecting enemies. They are often mercenaries, working for whoever can pay their price, and they have a natural ability to inflict terror in combat. Bugbears are known for their viciousness and their relentless pursuit of their goals.";
+            } else if (selectedOption === "Orc") {
+                message = "You selected the orc. Orcs are a fierce, warlike race known for their strength and their tendency to live in tribal societies. Orcs stand taller than most other races, with muscular builds and a propensity for violence and conflict. They are highly skilled warriors, often wielding massive weapons like greataxes and greatswords. Orcs have a strong warrior culture, and many of them are driven by the desire for power, conquest, or honor. While orcs are often seen as barbaric, they have a deep sense of loyalty to their tribes and families, and many orcs choose to become adventurers in search of glory.";
+            } else if (selectedOption === "Kobold") {
+                message = "You selected the kobold. Kobolds are small, reptilian creatures known for their cunning and craftiness. Standing about 2 to 3 feet tall, kobolds are often found in underground lairs, where they dig tunnels and create traps. They are highly intelligent and have a knack for creating elaborate devices, often using their ingenuity to outsmart opponents rather than engage in direct combat. Kobolds are notorious for their tendency to swarm in large numbers, overwhelming foes through sheer numbers and their clever tactics. Despite their small stature, kobolds are dangerous due to their resourcefulness and trap-making skills.";
+            } else if (selectedOption === "Goblin") {
+                message = "You selected the goblin. Goblins are small, green-skinned creatures known for their mischief, greed, and cunning. Often found in caves, forests, and ruins, goblins are resourceful and clever, relying on traps, ambushes, and quick thinking to survive. They are typically not strong fighters, but their speed and cleverness make them difficult to pin down. Goblins are known for their love of treasure and may often be found raiding settlements or adventurers' camps for valuables. Despite their small size and unpredictable nature, goblins can be dangerous opponents, especially when cornered.";
+            } else if (selectedOption === "Tortle") {
+                message = "You selected the tortle. Tortles are a race of turtle-like humanoids known for their stoic nature and their deep connection to the natural world. Standing around 5 to 6 feet tall, tortles have sturdy, armored shells that provide excellent protection in combat. They are known for their calm demeanor, patient outlook on life, and their affinity for nature and the sea. Tortles are often found as hermits, wandering the world in search of peace, wisdom, or adventure. They are highly resilient and adaptable, using their shells for defense and relying on their martial prowess to defend themselves when needed.";
+            } else if (selectedOption === "Centaur") {
+                message = "You selected the centaur. Centaurs are a race of half-human, half-horse creatures known for their strength, speed, and connection to the wild. Standing over 7 feet tall, centaurs are powerful, with the lower bodies of horses and the upper torsos of humans. They are skilled hunters, archers, and warriors, and they often live in open plains or forests, far from civilization. Centaurs value freedom and the natural world, and they tend to have a strong sense of honor and community. Their speed and mobility make them excellent in both combat and travel, and they are often called upon to protect the wilds from encroaching threats.";
+            } else if (selectedOption === "Minotaur") {
+                message = "You selected the minotaur. Minotaurs are large, bull-headed humanoids known for their incredible strength and ferocity. Standing around 7 feet tall, minotaurs have the heads of bulls and the muscular bodies of humanoid warriors. They are often found in labyrinthine mazes or deep caverns, where they use their strength and keen sense of direction to navigate. Minotaurs are skilled in close combat, using massive weapons like great axes or war hammers to deal devastating blows. Despite their fearsome appearance, many minotaurs are driven by a sense of honor and seek to prove their worth in battle.";
+            } else if (selectedOption === "Kitsune") {
+                message = "You selected the kitsune. Kitsune are mystical fox-like humanoids known for their cunning, agility, and magical abilities. Kitsune have the ability to shape-shift, often taking the form of foxes or other creatures, and they are known for their trickery and slyness. In combat, kitsune are agile and swift, often relying on their quick reflexes and magical tricks to outmaneuver opponents. They are skilled illusionists and charmers, and many kitsune are known for their mischievous personalities. Despite their playful nature, kitsune can be powerful allies and dangerous foes when their tricks are called upon.";
+            }
+            alert(message); // Show the alert with the corresponding message
+        }
 
+        function showCAlert() {
+            var dropdown = document.getElementById("class");
+            var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+            var message = "";
+if (selectedOption === "Barbarian") {
+    message = "You selected the Barbarian. Barbarians are fierce warriors from the wilds, known for their primal rage and physical prowess. They are often found in remote tribes or nomadic cultures, relying on their raw strength and instinct to survive. In combat, Barbarians can enter a state of rage, granting them enhanced strength, durability, and resistance to damage. Their unyielding ferocity and endurance make them formidable opponents in battle. Barbarians typically favor simple weapons like great axes and swords, though they are also adept at using their fists and brute strength to overpower enemies. Though their social interactions may be rough, they are fiercely loyal to their tribe and allies.";
+} else if (selectedOption === "Bard") {
+    message = "You selected the Bard. Bards are versatile spellcasters and musicians, blending magic with creativity and charm. Known for their charismatic personalities, Bards can inspire allies, manipulate emotions, and cast spells with a wide range of effects. Their talents extend beyond magic, as Bards are often skilled in various arts, including music, dance, and acting. They have access to a diverse spellcasting list and can adapt to many situations, whether through combat, persuasion, or social encounters. With their deep knowledge of lore and history, Bards also excel at supporting allies and taking on a variety of roles in a party.";
+} else if (selectedOption === "Cleric") {
+    message = "You selected the Cleric. Clerics are holy warriors and spellcasters, devoted to the gods and their divine power. They serve as intermediaries between the mortal world and the divine, wielding divine magic to heal the wounded, protect the innocent, and smite their enemies. Clerics are often skilled in both combat and magic, making them versatile members of any adventuring party. Their abilities vary depending on their deity and domain, with some focused on healing, others on destruction, and some providing protection or guidance. Clerics are often leaders, providing wisdom and guidance to their companions.";
+} else if (selectedOption === "Druid") {
+    message = "You selected the Druid. Druids are spellcasters who are deeply connected to nature and its forces. They can channel the magic of the natural world, transforming into animals, commanding the elements, or communing with the spirits of the wild. Druids have an inherent bond with the land, often serving as guardians of forests, rivers, and other natural places. Their shape-shifting ability allows them to assume the form of various animals, gaining unique abilities in each form. Druids also have powerful healing magic and nature-based spells, making them indispensable in both combat and exploration.";
+} else if (selectedOption === "Fighter") {
+    message = "You selected the Fighter. Fighters are masters of martial combat, excelling with a wide variety of weapons and armor. They are highly skilled in physical combat, using their strength, dexterity, and tactics to defeat their enemies. Fighters are often well-rounded in battle, capable of both dealing and absorbing damage. Depending on their chosen fighting style, they can focus on offense, defense, or a balance of both. Fighters are versatile, able to take on many different roles, whether as frontline tanks, damage dealers, or strategic commanders in battle.";
+} else if (selectedOption === "Monk") {
+    message = "You selected the Monk. Monks are martial artists who harness the power of their bodies and minds to perform incredible feats of agility, speed, and strength. They are trained in ancient traditions, often using unarmed combat and the manipulation of their own ki (life energy) to enhance their abilities. Monks are known for their exceptional mobility, able to move quickly across the battlefield and strike with precision and devastating force. They also possess a unique ability to heal and deflect attacks, making them both offensive and defensive specialists in combat.";
+} else if (selectedOption === "Paladin") {
+    message = "You selected the Paladin. Paladins are holy knights, warriors of faith who serve the forces of good and righteousness. They are known for their unwavering commitment to their cause, their ability to heal the wounded, and their fearsome ability to smite evil. Paladins possess divine powers granted by their deity, which they use to protect the innocent, destroy evil, and inspire their allies. They are also highly skilled in combat, often wielding heavy armor and weapons with great proficiency. Paladins take an oath to uphold a specific code of conduct, which guides their actions and decisions.";
+} else if (selectedOption === "Ranger") {
+    message = "You selected the Ranger. Rangers are expert trackers, hunters, and survivalists, often at home in the wilderness. They excel in ranged combat, using bows and crossbows, but are also proficient in melee combat when necessary. Rangers have a deep connection to nature and the animals around them, often having animal companions to aid them in battle. They are skilled in survival, able to find food, shelter, and navigate difficult terrain. Rangers also have access to nature-based magic, allowing them to manipulate the environment, heal wounds, and enhance their abilities.";
+} else if (selectedOption === "Rogue") {
+    message = "You selected the Rogue. Rogues are stealthy, cunning, and versatile adventurers, excelling in tasks that require finesse and quick thinking. They are often found in shadowy corners, using their skills in stealth, sleight of hand, and lockpicking to accomplish their goals. In combat, Rogues rely on speed and precision, striking when the enemy least expects it. They can deal devastating sneak attacks, targeting vulnerable areas with deadly accuracy. Rogues are also highly adaptable, capable of fitting into many roles, whether as scouts, thieves, or infiltrators.";
+} else if (selectedOption === "Sorcerer") {
+    message = "You selected the Sorcerer. Sorcerers are innate spellcasters, drawing their power from within rather than from study or prayer. Their magic is often a part of their heritage, with bloodlines tied to dragons, fey, or other magical creatures. Sorcerers have access to powerful spells, and their magic is often more spontaneous and unpredictable than that of other spellcasters. They can manipulate the forces of magic in unique ways, with abilities like metamagic, allowing them to alter spells on the fly. Sorcerers are often more focused on offensive magic and can unleash devastating spells with overwhelming force.";
+} else if (selectedOption === "Warlock") {
+    message = "You selected the Warlock. Warlocks are spellcasters who have entered into pacts with powerful, often otherworldly beings, such as fiends, fey, or eldritch entities. In exchange for power, Warlocks are granted access to a limited set of spells and abilities that reflect their patron’s nature. Warlocks often have a mysterious and somewhat dangerous aura, as they are bound to their patron's whims. They can cast a variety of spells, typically focused on curses, manipulation, and dark magic. Their unique pact abilities, such as invocations, allow them to customize their magical powers.";
+} else if (selectedOption === "Wizard") {
+    message = "You selected the Wizard. Wizards are master spellcasters who dedicate their lives to studying the arcane arts. They learn their magic through rigorous study, unlocking the secrets of the universe by reading ancient tomes and experimenting with magical forces. Wizards have a vast array of spells at their disposal, making them extremely versatile. Their magic covers everything from elemental destruction to illusion and transmutation. Though physically weak, Wizards are powerful tacticians, using their intelligence and spellcraft to solve problems and defeat enemies from a distance.";
+} 
+alert(message);
+        }
 function rollButtons() {
   const xReg = /X\((.*?)\)/;
   const yReg = /Y\((.*?)\)/;
