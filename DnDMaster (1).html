@@ -1987,6 +1987,13 @@ function rollStats() {
     applyRacialModifiers();
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    var overlay = document.getElementById("overlay");
+    setTimeout(function() {
+        overlay.style.display = "none";
+        document.body.style.overflow = "auto"; // Re-enable scrolling
+    }, 10000); // 10 seconds
+});
 
 function makeStatsEditable() {
     const stats = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
