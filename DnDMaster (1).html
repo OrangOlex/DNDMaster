@@ -27,7 +27,7 @@
         }
 
         h1, h2, h3 {
-            color: #ffffff; /* Primary color */
+            color: #000000; /* Primary color */
             margin-bottom: 10px;
             text-align: center;
         }
@@ -949,7 +949,7 @@ main {
 		linear-gradient(45deg, black 25%, transparent 25%);
 	background-size: 2em 2em;
 	background-color: #232323;
-	color: white;
+	color: rgb(255, 255, 255);
 	transition: transform 2s;
 }
 
@@ -1018,12 +1018,14 @@ main {
 }
 
 .book:hover > .book-content {
+  color: black;
 	transform: scale(0.9) translateY(0px);
 }
 
 .book:hover > .book-content h3,
 .book:hover > .book-content p {
 	opacity: 1;
+  color: black;
 }
 
 #overlay {
