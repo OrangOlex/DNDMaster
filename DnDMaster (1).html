@@ -17,7 +17,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #000000;
-            color: #333;
+            color: #ffffff;
             padding: 20px;
             display: flex;
             justify-content: center;
@@ -27,7 +27,7 @@
         }
 
         h1, h2, h3 {
-            color: #ff3c00; /* Primary color */
+            color: #ffffff; /* Primary color */
             margin-bottom: 10px;
             text-align: center;
         }
@@ -65,9 +65,11 @@
         select {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ced4da;
+            border: 1px solid #ffffff;
             border-radius: 6px;
             margin-bottom: 15px;
+            background-color: black;
+            color: white;
             transition: border-color 0.3s;
         }
 
@@ -75,11 +77,13 @@
         input[type="number"]:focus,
         select:focus {
             border-color: #000000; /* Focus color */
+            background-color: rgb(0, 0, 0);
+            color: white;
             outline: none;
         }
 
         button {
-            background-color: #ffffff; /* Button color */
+            background-color: #000000; /* Button color */
             color: rgb(255, 96, 33);
             border: none;
             padding: 12px;
@@ -87,7 +91,6 @@
             cursor: pointer;
             width: 100%;
             font-size: 16px;
-            box-shadow: 0 6px 50px rgb(255, 47, 0);
             transition: background-color 0.3s;
             margin-bottom: 15px;
         }
@@ -99,7 +102,7 @@
         .character-sheet {
             margin-top: 20px;
             padding: 15px;
-            background-color: #ffe9e3 ;
+            background-color: #000000 ;
             border-radius: 6px;
             white-space: pre-wrap; /* Preserve whitespace */
             font-family: 'Courier New', monospace; /* Monospaced for character sheet */
@@ -117,10 +120,10 @@
             justify-content: space-between;
             align-items: center;
             padding: 8px;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #111111;
             border-radius: 4px;
             margin: 5px 0;
-            background-color: #fafafa;
+            background-color: #000000;
         }
 
         .stat label, .skill label {
@@ -211,7 +214,7 @@
 }
 
 ::selection {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 /*---------- REMOVE DEFAULT NUMBER INCREMENT ARROWS ----------*/
@@ -915,7 +918,7 @@ p {
 main {
 	display: flex;
 	justify-content: center;
-	background-color: #b9b5b5;
+	background-color: #9a5e5e;
 }
 
 .book {
@@ -1063,7 +1066,7 @@ main {
     </div>
     <div class="container">
     <div id="main">
-        <h1>DND Master</h1>
+        <h1><style></style>DND Master</h1>
         <button onclick="showSection('characterGen')"><img src="https://i.pinimg.com/474x/da/43/c6/da43c660e6b2817e4c03990c2503abfa.jpg"><p>Character Generator</p></button>
         <button onclick="showSection('spellGuide')"><img src="https://ih1.redbubble.net/image.4574751503.0086/aps,504x498,medium,transparent-pad,600x600,f8f8f8.u1.webp"><p>Spell Book</p></button>
         <div id="container-Dice">
@@ -1692,7 +1695,7 @@ main {
         </select>
 		
         <label for="backstory">Backstory:</label>
-		<textarea placeholder="Write your story" id="backstory" rows="10" cols="52"></textarea>
+		<textarea style="background-color: black; color: white;" placeholder="Write your story" id="backstory" rows="10" cols="52"></textarea>
 		
         <!-- Ability Scores -->
         <h2>Ability Scores</h2>
