@@ -1064,7 +1064,7 @@ main {
     </style>
 </head>
 <body>
-  <div id="overlay">
+  <div id="ovrlay">
 		<p>Loading Dice...</p>
         <img src="DiceLoadingIMG.gif" alt="Welcome Image">
     </div>
@@ -3166,9 +3166,20 @@ ${dwarfInformation} ${hillDwarfInformation} ${mountainDwarfInformation} ${duerga
       pdf.text(line, x, lineY);
     });
 
+    const x2 = 167;
+    const y2 = 360;
+    const boxWidth2 = 260;
+    const boxHeight2 = 360;
+
+    const lines2 = pdf.splitTextToSize(backStory, boxWidth2);
     pdf.setFontSize(10);
-    pdf.text("" + backStory, 173, 370);
-    pdf.rect(163, 350, 267, 130);
+    pdf.rect(165, 350, 265, 130);
+    lines2.forEach((line2, i) => {
+      const lineHeight2 = 9;
+      const lineY2 = y2 + i * lineHeight2;
+      if (lineY2 > y2 + boxHeight2) return;
+      pdf.text(line2, x2, lineY2);
+    });
 
     pdf.save("character-sheet.pdf");
 });
