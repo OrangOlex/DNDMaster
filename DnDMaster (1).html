@@ -27,15 +27,15 @@
         }
 
         h1, h2, h3 {
-            color: #000000; /* Primary color */
+            color: #fa560a; /* Primary color */
             margin-bottom: 10px;
             text-align: center;
         }
 
         .container {
-            background-color: #ff6f01;
+            background-color: #ff770f00;
             border-radius: 12px;
-            box-shadow: 0 6px 50px rgb(255, 102, 0);
+            box-shadow: 0 6px 50px rgb(255, 106, 0);
             padding: 20px;
             width: 100%;
             max-width: 500px; /* Set max width for responsiveness */
@@ -65,18 +65,18 @@
         select {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ffffff;
+            border: 1px solid rgb(255, 67, 10);
             border-radius: 6px;
             margin-bottom: 15px;
             background-color: black;
-            color: white;
+            color: rgb(255, 255, 255);
             transition: border-color 0.3s;
         }
 
         input[type="text"]:focus,
         input[type="number"]:focus,
         select:focus {
-            border-color: #000000; /* Focus color */
+            border-color: rgb(255, 67, 10); /* Focus color */
             background-color: rgb(0, 0, 0);
             color: white;
             outline: none;
@@ -84,8 +84,8 @@
 
         button {
             background-color: #000000; /* Button color */
-            color: rgb(255, 96, 33);
-            border: none;
+            border-color: rgb(255, 67, 10);
+            color: rgb(255, 255, 255);
             padding: 12px;
             border-radius: 6px;
             cursor: pointer;
@@ -120,7 +120,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 8px;
-            border: 1px solid #111111;
+            border: 1px solid rgb(255, 67, 10);
             border-radius: 4px;
             margin: 5px 0;
             background-color: #000000;
@@ -918,7 +918,7 @@ p {
 main {
 	display: flex;
 	justify-content: center;
-	background-color: #9a5e5e;
+	background-color: #9a5e5e00;
 }
 
 .book {
@@ -993,16 +993,16 @@ main {
 
 .book-content {
 	transform: scale(0.9) translateY(30px);
-	background-color: white !important;
-  color: black;
+	background-color: rgb(0, 0, 0) !important;
+  color: rgb(0, 0, 0);
 	transition: all 0.3s 1s;
 }
 
 .book-content h3,
 .book-content p {
-  color: black;
+  color: rgb(255, 67, 10);
 	opacity: 0;
-	transition: all 0.3s 0.3s;
+	transition: all 0.9s 0.9s;
 }
 
 .book-cover > div {
@@ -1018,17 +1018,17 @@ main {
 }
 
 .book:hover > .book-content {
-  color: black;
+  color: rgb(255, 67, 10);
 	transform: scale(0.9) translateY(0px);
 }
 
 .book:hover > .book-content h3,
 .book:hover > .book-content p {
 	opacity: 1;
-  color: black;
+  color: rgb(255, 67, 10);
 }
 
-#ovrlay {
+#overlay {
     position: fixed;
     top: 0;
     left: 0;
