@@ -105,7 +105,6 @@ input[type=reset]:active {
 }
 .right::after, .right div {
     top: 0;
-    left: 0;
     transform-origin: 0 50%;
     transition: transform 0.25s 0.25s linear;
 }
@@ -159,6 +158,10 @@ input[type=reset]:active {
 .contents h1 {
     color: rgb(255, 72, 0);
     font-size: 2em;
+}
+.contents h2, h3 {
+    color: rgb(255, 72, 0);
+    font-size: 1.3em;
 }
 .contents p {
     font-family: "Source Sans Pro", serif;
