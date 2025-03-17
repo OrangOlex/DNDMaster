@@ -247,8 +247,9 @@ document.addEventListener("DOMContentLoaded", function() {
 var overlay = document.getElementById("overlay");
 setTimeout(function() {
 overlay.style.display = "none";
+document.body.style.overflow = "none"; // Re-enable scrolling
+}, 5000); // 5 seconds
 document.body.style.overflow = "auto"; // Re-enable scrolling
-}, 10000); // 10 seconds
 });
 
 function makeStatsEditable() {
