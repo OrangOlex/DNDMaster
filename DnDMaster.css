@@ -12,20 +12,6 @@
     margin: 0;
     padding: 0;
 }
-        .form-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .form-row label {
-            margin-right: 10px;
-            min-width: 150px; /* Adjust the width as needed */
-        }
-        .form-row input {
-            flex-grow: 1;
-            max-width: 300px; /* Adjust the width as needed */
-            width: auto;
-        }
 input {
     position: absolute;
 }
