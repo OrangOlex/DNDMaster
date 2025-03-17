@@ -203,9 +203,11 @@
     <div id="characterGen">
         <h1>D&D 5e Character Creator</h1>
         <button onclick="returnButton()" ontouch="returnButton()">Back</button>
+	<div class="form-row">
         <label for="charName">Character Name:</label>
         <input type="text" id="charName" placeholder="Enter character name" required>
-        
+	</div>
+	<div class="form-row">
         <label for="race">Race:</label>
         <select id="race" onchange="showAlert()">
       <option value="Dwarf" data-speed="25">Dwarf</option>
@@ -237,7 +239,7 @@
 			<option value="Minotaur" data-speed="30">Minotaur</option>
 			<option value="Kitsune" data-speed="30">Kitsune</option>
         </select>
-        
+	</div>
         <label for="background">Background:</label>
         <select id="background">
             <option value="Acolyte">Acolyte</option>
