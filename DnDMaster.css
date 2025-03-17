@@ -12,14 +12,9 @@
     margin: 0;
     padding: 0;
 }
+
 input {
-    position: relative;
-    display: inline-block;
-    width: auto;
-}
-label, input {
-    vertical-align: middle; /* Align the label and input vertically */
-    margin: 5px 0; /* Add some margin for spacing */
+    position: absolute;
 }
 input[type=radio] {
     top: -20px;
