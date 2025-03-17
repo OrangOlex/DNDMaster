@@ -14,7 +14,7 @@
 }
 input {
     position: relative;
-    diplay: inline-block;
+    display: inline-block;
     width: auto;
 }
 label, input {
