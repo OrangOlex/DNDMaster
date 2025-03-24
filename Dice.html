@@ -1202,8 +1202,10 @@
                     <input type="reset" value="Return" /></form>
                         </body>
                         <script>
-                          document.getElementById('navigateButton').addEventListener('click', function(event) {
-                              event.preventDefault();
-                              window.location.href = 'https://www.w3schools.com/html/';
-                          });
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('navigateButton').addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = 'DnDMaster.html';
+            });
+        });
                       </script>
