@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="Dice.css">
 </head>
 <body>
-    <form class="container">
-        <button id="navigateButton">HTML Tutorial</button>
+    <form class="container" onsubmit="return false;">
+      <button id="navigateButton">HTML Tutorial</button>
         <input type="radio" name="title" id="book1" />
         <input type="radio" name="title" id="book2" />
         <input type="radio" name="title" id="book3" />
@@ -1201,8 +1201,9 @@
                     </div>
                     <input type="reset" value="Return" /></form>
                         </body>
-    <script>
-      document.getElementById('navigateButton').addEventListener('click', function() {
-    window.location.href = 'DnDMaster.html';
-  });
-</script>
+                        <script>
+                          document.getElementById('navigateButton').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              window.location.href = 'https://www.w3schools.com/html/';
+                          });
+                      </script>
