@@ -927,60 +927,7 @@ input[type=reset]:active {
     background-image: repeating-linear-gradient(90deg, transparent, transparent 21%, #aaa 21%, #aaa 25%, transparent 25%, transparent 46%, #aaa 46%, #aaa 50%, transparent 50%);
     background-size: 16px 16px;
 }
-.b16 {
-    display: block;
-    transform: translate3d(336px, -192px, 272px);
-}
-.b16 .block-inner > div {
-    background-color: rgb(65, 15, 0);
-}
-.b16 .block-inner > div.top, .b16 .block-inner > div.bottom {
-    width: 32px;
-    height: 160px;
-}
-.b16 .block-inner > div.top {
-    transform: rotateX(-90deg) translateY(-144px);
-}
-.b16 .block-inner > div.bottom {
-    transform: rotateX(-90deg) translateY(-144px) translateZ(256px);
-}
-.b16 .block-inner > div.front::before, .b16 .block-inner > div.back::before, .b16 .block-inner > div.left::before, .b16 .block-inner > div.right::before {
-    background-color: #000;
-    content: "";
-    width: 100%;
-    height: 100%;
-}
-.b16 .block-inner > div.front, .b16 .block-inner > div.back {
-    width: 32px;
-    height: 256px;
-}
-.b16 .block-inner > div.front::before, .b16 .block-inner > div.back::before {
-    opacity: 0.2;
-}
-.b16 .block-inner > div.front {
-    transform: translateZ(144px);
-}
-.b16 .block-inner > div.left, .b16 .block-inner > div.right {
-    width: 160px;
-    height: 256px;
-}
-.b16 .block-inner > div.left::before, .b16 .block-inner > div.right::before {
-    opacity: 0;
-}
-.b16 .block-inner > div.right {
-    transform: rotateY(-270deg) translate3d(16px, 0, -128px);
-    transform-style: preserve-3d;
-    background-color: #000000;
-}
-.b16 .block-inner > div.right::after {
-    background-color: rgb(65, 15, 0);
-    content: attr(data-title);
-}
-.b16 .block-inner > div.top, .b16 .block-inner > div.back, .b16 .block-inner > div.bottom {
-    background-color: #000000;
-    background-image: repeating-linear-gradient(90deg, transparent, transparent 21%, #aaa 21%, #aaa 25%, transparent 25%, transparent 46%, #aaa 46%, #aaa 50%, transparent 50%);
-    background-size: 16px 16px;
-}
+
 label:nth-child(n+6):nth-child(-n+17):hover .block-inner {
    /* Book Viewing */
     transform: rotateX(-90deg) translateZ(64px);
@@ -1105,18 +1052,7 @@ input[type=radio]:nth-child(10):checked ~ .surface label:nth-child(15) .block-in
 input[type=radio]:nth-child(10):checked ~ .surface label:nth-child(15) .block-inner:hover .right::after, input[type=radio]:nth-child(10):checked ~ .surface label:nth-child(15) .block-inner:hover .cover {
     transform: rotateY(-135deg);
 }
-input[type=radio]:nth-child(11) ~ .surface label:nth-child(16) .block-inner {
-    animation: returnBook 0.25s linear;
-}
-input[type=radio]:nth-child(11):checked ~ .surface {
-    transform: translate(-41.6666666667%, 152px) rotateX(80deg) rotateZ(0deg);
-}
-input[type=radio]:nth-child(11):checked ~ .surface label:nth-child(16) .block-inner {
-    animation: viewBook 0.25s 0.25s linear forwards;
-}
-input[type=radio]:nth-child(11):checked ~ .surface label:nth-child(16) .block-inner:hover .right::after, input[type=radio]:nth-child(11):checked ~ .surface label:nth-child(16) .block-inner:hover .cover {
-    transform: rotateY(-135deg);
-}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
