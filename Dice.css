@@ -1086,7 +1086,7 @@ input[type=radio]:nth-child(10):checked ~ .surface label:nth-child(15) .block-in
 
 .navigateButton {
     align-items: left;
-    background-color: #000000; /* Button color */
+    background-color: #FFA500; /* Button color */
     border-color: rgb(255, 67, 10);
     color: rgb(255, 255, 255);
     padding: 12px;
