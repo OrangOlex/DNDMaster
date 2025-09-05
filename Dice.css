@@ -1084,8 +1084,8 @@ input[type=radio]:nth-child(10):checked ~ .surface label:nth-child(15) .block-in
    }
 }
 
-.BackButton {
-    align-items: center;
+.navigateButton {
+    align-items: left;
     background-color: #000000; /* Button color */
     border-color: rgb(255, 67, 10);
     color: rgb(255, 255, 255);
@@ -1097,5 +1097,3 @@ input[type=radio]:nth-child(10):checked ~ .surface label:nth-child(15) .block-in
     transition: background-color 0.3s;
     margin-bottom: 15px;
 }
-
-
